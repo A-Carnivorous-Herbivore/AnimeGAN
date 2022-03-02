@@ -1,6 +1,7 @@
 import requests
+import os
 from bs4 import BeautifulSoup
-url = 'https://wall.alphacoders.com/by_sub_category.php?id=237089&name=Your+Lie+in+April+Wallpapers'
+url = 'https://wall.alphacoders.com/search.php?search=anime+city&page=8'
 r = requests.get(url)
 soup = BeautifulSoup(r.text, 'html.parser')
 images = soup.find_all('img')
@@ -9,7 +10,7 @@ print(images)
 name = range(0,1000)
 i = 0
 num = 30
-for image in images:
+'''for image in images:
     if i >= 3 and i%2 == 0:
         #name = image['alt']
         link = image['src']
@@ -17,7 +18,9 @@ for image in images:
             im = requests.get(link)
             f.write(im.content)
             num = num + 1
-    i = i + 1
+    i = i + 1'''
+'''for i in range(0, 90):
+    os.rename(str(i), str(i) + '.jpg')'''
 '''def returnHTML(url):
     html = requests.get(url).content
     return html
